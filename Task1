@@ -1,0 +1,22 @@
+#include <cstdlib> 
+#include <ctime> 
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int turns;
+	cout << "Enter your turns:" << endl;
+	cin >> turns;
+	srand((unsigned)time(0));
+	int i;
+	for (int j = 0; j<turns; j++){
+		i = (rand() % 6) + 1;
+		cout << i << "\n";
+	}
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
