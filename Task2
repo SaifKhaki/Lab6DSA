@@ -1,1 +1,85 @@
 
+#include <iostream> 
+#include <vector> 
+#include <cstdlib> 
+#include <ctime> 
+#include <algorithm>
+using namespace std;
+void moveMin(vector<int> &first, vector<int> &second);
+int main()
+{
+	vector<int> g1;
+	vector<int> g2;
+	srand((unsigned)time(0));
+	int i;
+	
+	for (int i = 1; i <= 5; i++){
+		int randNum = (rand() % 100) + 1;
+		g1.push_back(randNum);
+		g2.push_back(0);
+	}
+	//output first vector
+	for (auto i = g1.begin(); i != g1.end(); ++i)
+		cout << *i << " ";
+	cout << endl;
+	//output second vector
+	for (auto i = g2.begin(); i != g2.end(); ++i)
+		cout << *i << " ";
+	cout << endl;
+
+	//using bubble sort
+	cout << endl << "Before Addition of an entry:" << endl;
+	cout << endl << "Bubble Sorted vector:" << endl;
+	moveMin(g1, g2);
+	for (auto i = g2.begin(); i != g2.end(); ++i)
+		cout << *i << " ";
+	//using built in sort
+	sort(g1.begin(),g1.end());
+	cout << endl << "Built in sorted vector:" << endl;
+	for (auto i = g1.begin(); i != g1.end(); ++i)
+		cout << *i << " ";
+
+
+	cout << endl << "After Addition of an entry:" << endl;
+	g1.push_back((rand() % 100) + 1);
+	g2.push_back(0);
+	moveMin(g1, g2);
+	for (auto i = g2.begin(); i != g2.end(); ++i)
+		cout << *i << " ";
+	//using built in sort
+	sort(g1.begin(), g1.end());
+	cout << endl << "Built in sorted vector:" << endl;
+	for (auto i = g1.begin(); i != g1.end(); ++i)
+		cout << *i << " ";
+
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	getchar();
+	return 0;
+}
+
+void moveMin(vector<int> &first, vector<int> &second){
+	for (int i = 0; i < first.size(); i++){
+		second[i]=first[i];
+	}
+	for (auto i = 0; i < first.size(); i++){
+		for (auto j = 0; j < first.size() - 1 - i; j++){
+			if (second[j]>second[j + 1]){
+				swap(second[j], second[j + 1]);
+			}
+		}
+	}
+}
+
+void swap(int &a, int &b){
+	int c = a;
+	a = b;
+	b = c;
+}
+
+
+ 
+
